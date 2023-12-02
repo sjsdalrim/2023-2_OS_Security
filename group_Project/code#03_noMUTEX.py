@@ -13,9 +13,9 @@ def worker_1(_num):
         while True:
             global counter
             a = counter
+            prev_a = counter
             time.sleep(random.random())
-        
-            prev_a = a
+            
             a += 1
             time.sleep(random.random())
             
@@ -30,9 +30,9 @@ def worker_2(_num):
         while True:
             global counter
             b = counter
+            prev_b = counter
             time.sleep(random.random())
-        
-            prev_b = b
+            
             b += 1
             time.sleep(random.random())
             
