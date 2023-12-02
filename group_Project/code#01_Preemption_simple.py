@@ -11,11 +11,7 @@ counter = 0
 def worker_1(_lock_1, _lock_2, _num):
     for _ in range(_num):
 
-        time.sleep(random.random())
-
         _lock_1.acquire()
-
-        time.sleep(random.random())
         
         if (_lock_2.locked() == True):
             _lock_1.release()
@@ -25,6 +21,7 @@ def worker_1(_lock_1, _lock_2, _num):
             ## what you want to do in worker1 Thread
             global counter
             counter += 1
+            ##
 
             _lock_1.release()
             _lock_2.release()
@@ -33,11 +30,7 @@ def worker_1(_lock_1, _lock_2, _num):
 def worker_2(_lock_1, _lock_2, _num):
     for _ in range(_num):
 
-        time.sleep(random.random())
-
         _lock_2.acquire()
-        
-        time.sleep(random.random())
         
         if (_lock_1.locked() == True):
             _lock_2.release()
@@ -47,6 +40,7 @@ def worker_2(_lock_1, _lock_2, _num):
             ## what you want to do in worker2 Thread
             global counter
             counter += 1
+            ##
 
             _lock_1.release()
             _lock_2.release()
