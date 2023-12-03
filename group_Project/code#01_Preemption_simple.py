@@ -13,6 +13,7 @@ def worker_1(_lock_1, _lock_2, _num):
 
         _lock_1.acquire()
         
+            ## if Y locked, release X
         if (_lock_2.locked() == True):
             _lock_1.release()
         else:
@@ -32,6 +33,7 @@ def worker_2(_lock_1, _lock_2, _num):
 
         _lock_2.acquire()
         
+            ## if X locked, release Y
         if (_lock_1.locked() == True):
             _lock_2.release()
         else:
@@ -49,8 +51,8 @@ def worker_2(_lock_1, _lock_2, _num):
 lock_X = Lock()
 lock_Y = Lock()
 
-t1 = Thread(target=worker_1, args=(lock_X, lock_Y, 100))
-t2 = Thread(target=worker_2, args=(lock_X, lock_Y, 100))
+t1 = Thread(target=worker_1, args=(lock_X, lock_Y, 50))
+t2 = Thread(target=worker_2, args=(lock_X, lock_Y, 50))
 
 
 t1.start(), t2.start()

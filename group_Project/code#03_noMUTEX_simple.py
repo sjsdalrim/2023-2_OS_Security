@@ -10,6 +10,8 @@ counter = 0
 
 def worker_1(_num):
     for _ in range(_num):
+
+            ## loop until prev_a == counter(memory)
         while True:
             global counter
             a = counter
@@ -24,6 +26,8 @@ def worker_1(_num):
 
 def worker_2(_num):
     for _ in range(_num):
+
+            ## loop until prev_b == counter(memory)
         while True:
             global counter
             b = counter
@@ -36,8 +40,8 @@ def worker_2(_num):
                 break
 
 
-t1 = Thread(target=worker_1, args=(20,))
-t2 = Thread(target=worker_2, args=(20,))
+t1 = Thread(target=worker_1, args=(50,))
+t2 = Thread(target=worker_2, args=(50,))
 
 
 t1.start(), t2.start()

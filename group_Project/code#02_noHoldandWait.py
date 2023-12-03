@@ -64,8 +64,8 @@ lock_Prevent = Lock()
 lock_X = Lock()
 lock_Y = Lock()
 
-t1 = Thread(target=worker_1, args=(lock_Prevent, lock_X, lock_Y, 100))
-t2 = Thread(target=worker_2, args=(lock_Prevent, lock_X, lock_Y, 100))
+t1 = Thread(target=worker_1, args=(lock_Prevent, lock_X, lock_Y, 50))
+t2 = Thread(target=worker_2, args=(lock_Prevent, lock_X, lock_Y, 50))
 
 
 t1.start(), t2.start()

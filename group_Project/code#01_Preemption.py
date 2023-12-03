@@ -17,7 +17,8 @@ def worker_1(_lock_1, _lock_2, _num):
         print('worker_1 acquired lock_X')
 
         time.sleep(random.random())
-        
+       
+            ## if Y locked, release X
         if (_lock_2.locked() == True):
             _lock_1.release()
             print('worker_1 released lock_X')
@@ -46,6 +47,7 @@ def worker_2(_lock_1, _lock_2, _num):
         
         time.sleep(random.random())
         
+            ## if X locked, release Y
         if (_lock_1.locked() == True):
             _lock_2.release()
             print('worker_2 released lock_Y')
