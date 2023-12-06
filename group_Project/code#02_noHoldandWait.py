@@ -28,7 +28,7 @@ def worker_1(_lock_P, _lock_1, _lock_2, _num):
 
         _lock_1.release()
         _lock_2.release()
-        print('               [SUCCESS] worker_1 complete\n')
+        print('[SUCCESS] worker_1 complete\n')
         _lock_P.release()
         
         time.sleep(random.random())
@@ -54,7 +54,7 @@ def worker_2(_lock_P, _lock_1, _lock_2, _num):
 
         _lock_2.release()
         _lock_1.release()
-        print('               [SUCCESS] worker_2 complete\n')
+        print('[SUCCESS] worker_2 complete\n')
         _lock_P.release()
         
         time.sleep(random.random())
