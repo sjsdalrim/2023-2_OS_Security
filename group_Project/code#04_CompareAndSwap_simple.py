@@ -24,9 +24,10 @@ def operation():
 
     while True:
         oldVal = main_memory[0]
+        newVal = main_memory[0]
 
         ## what you want to do in Thread
-        newVal = oldVal + 1
+        newVal = newVal + 1
         ##
 
         if (compare_and_swap(0, oldVal, newVal) == True):
