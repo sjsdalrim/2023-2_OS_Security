@@ -40,7 +40,7 @@ def worker_1(_lock_1, _lock_2, _num):
 
 def worker_2(_lock_1, _lock_2, _num):
     for _ in range(_num):
-
+        while True:
             time.sleep(random.random())
     
             _lock_2.acquire()
