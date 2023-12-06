@@ -14,11 +14,11 @@ def compare_and_swap(_index, _old_Value, _new_Value):
     
     if (main_memory[_index] == _old_Value):
         main_memory[_index] = _new_Value
-        print('SET ' + str(main_memory[0]))
+        print('[SET] ' + str(main_memory[0]) + ' == old_value')
         time.sleep(random.random())
         return True
     else:
-        print('               FAIL ' + str(main_memory[0]))
+        print('               [FAIL] ' + str(main_memory[0]) + ' != old_value')
         time.sleep(random.random())
         return False
 
@@ -28,10 +28,11 @@ def operation():
 
     while True:
         oldVal = main_memory[0]
+        newVal = main_memory[0]
         time.sleep(random.random())
 
         ## what you want to do in Thread
-        newVal = oldVal + 1
+        newVal = newVal + 1
         time.sleep(random.random())
         ##
 
