@@ -10,42 +10,44 @@ counter = 0
 
 def worker_1(_lock_1, _lock_2, _num):
     for _ in range(_num):
-
-        _lock_1.acquire()
-        
-            ## if Y locked, release X
-        if (_lock_2.locked() == True):
-            _lock_1.release()
-        else:
-            _lock_2.acquire()
+        while True:
+            _lock_1.acquire()
             
-            ## what you want to do in worker1 Thread
-            global counter
-            counter += 1
-            ##
+                ## if Y locked, release X
+            if (_lock_2.locked() == True):
+                _lock_1.release()
+            else:
+                _lock_2.acquire()
+                
+                ## what you want to do in worker1 Thread
+                global counter
+                counter += 1
+                ##
 
-            _lock_1.release()
-            _lock_2.release()
+                _lock_1.release()
+                _lock_2.release()
+                break
 
 
 def worker_2(_lock_1, _lock_2, _num):
     for _ in range(_num):
-
-        _lock_2.acquire()
-        
-            ## if X locked, release Y
-        if (_lock_1.locked() == True):
-            _lock_2.release()
-        else:
-            _lock_1.acquire()
-
-            ## what you want to do in worker2 Thread
-            global counter
-            counter += 1
-            ##
-
-            _lock_1.release()
-            _lock_2.release()
+        while True:
+            _lock_2.acquire()
+            
+                ## if X locked, release Y
+            if (_lock_1.locked() == True):
+                _lock_2.release()
+            else:
+                _lock_1.acquire()
+    
+                ## what you want to do in worker2 Thread
+                global counter
+                counter += 1
+                ##
+    
+                _lock_1.release()
+                _lock_2.release()
+                break
 
 
 lock_X = Lock()
